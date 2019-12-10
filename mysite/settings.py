@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'polls.apps.PollsConfig'
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,7 +78,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': config('DATABASE_URL', cast=db_url),
+    'default': config('DATABASE_URL',
+                      default='sqlite:///' + BASE_DIR + 'db.sqlite3',
+                      cast=db_url),
 }
 
 
